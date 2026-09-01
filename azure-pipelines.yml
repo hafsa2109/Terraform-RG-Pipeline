@@ -10,7 +10,7 @@ variables:
 stages:
 
 # =========================
-# Stage 1: Terraform Init & Validate
+# Stage 1: Terraform Validate
 # =========================
 - stage: Validate
   displayName: 'Terraform Validate'
@@ -31,6 +31,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        backendServiceArm: 'Azure-Service-Connection'
 
     - task: TerraformTaskV4@4
       displayName: 'Terraform Validate'
@@ -62,6 +63,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        backendServiceArm: 'Azure-Service-Connection'
 
     - task: TerraformTaskV4@4
       displayName: 'Terraform Plan'
@@ -94,6 +96,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        backendServiceArm: 'Azure-Service-Connection'
 
     - task: TerraformTaskV4@4
       displayName: 'Terraform Apply'
